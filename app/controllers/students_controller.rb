@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
     
     @student = Student.new(params[:student].permit!)
     @student.save
-    redirect_to students_path
+    redirect_to students_path, notice: "Student successfully added!"
   end
   
   #Student Update actions
@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
     end
     
     if @student.update(params[:student].permit!)
-      redirect_to students_path
+      redirect_to students_path, notice: "Student successfully updated!"
     else
       render 'edit'
     end
