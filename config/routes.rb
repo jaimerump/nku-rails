@@ -8,7 +8,10 @@ NkuRails::Application.routes.draw do
     resources :comments
   end
   
-  root 'welcome#index'
+  resources :students do
+  end
+  
+  root 'students#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
