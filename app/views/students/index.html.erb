@@ -1,6 +1,5 @@
-<%= link_to 'New Student', new_student_path %>
+<h1>The Students:</h1>
 
-<div>Here are all of the students in this class:</div>
 <ul>
   <% @students.each do |student| %>
     <li>
@@ -8,6 +7,9 @@
       <div><%= student.nickname %></div>
       <div><%= student.email %></div>
       <img src="<%= student.image_url %>" />
+      <%= link_to 'Edit', edit_student_path(student) %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to 'New Student', new_student_path %>
