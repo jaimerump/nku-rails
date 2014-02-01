@@ -21,3 +21,6 @@ end
 group :test do
   gem 'rspec-rails'
 end
+
+# Use has_secure_password for authentication
+gem 'bcrypt-ruby', '~> 3.1.2'
