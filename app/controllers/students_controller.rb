@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
       params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
     end
     
-    @student = Student.new(params[:student].permit!)
+    @student = Student.new(student_params)
     @student.save
     redirect_to students_path, notice: "Student successfully added!"
   end
@@ -51,11 +51,15 @@ class StudentsController < ApplicationController
       params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
     end
     
-    if @student.update(params[:student].permit!)
+    if @student.update(student_params)
       redirect_to students_path, notice: "Student successfully updated!"
     else
       render 'edit'
     end
   end
-  
+
+  private
+  def student_params
+    params.require(:student).permit(:name, :nickname, :email, :image_url, :password, :password_confirmation)
+  end
 end
