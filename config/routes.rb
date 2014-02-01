@@ -11,6 +11,11 @@ NkuRails::Application.routes.draw do
   resources :students do
   end
   
+  # Login/logout routes
+  get 'login', to: "sessions#index", as: :login_page
+  post 'login/process', to: "sessions#login", as: :login_process
+  get 'logout', to: "sessions#logout", as: :logout
+  
   root 'students#index'
 
   # Example of regular route:

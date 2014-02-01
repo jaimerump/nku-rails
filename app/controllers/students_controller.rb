@@ -7,10 +7,23 @@ class StudentsController < ApplicationController
   #Student Creation actions
   
   def new
+    # Make sure they're not already logged in
+    current_student = get_current_student
+    if( current_student != nil )
+      redirect_to students_path
+    end
+      
     @student = Student.new
   end
   
   def create
+    
+    # Make sure they're not already logged in
+    current_student = get_current_student
+    if( current_student != nil )
+      redirect_to students_path
+    end
+    
     #Check for email, add placeholder if missing
     if( params[:student][:email].empty? )
       params[:student][:email] = "placeholder@example.com"
@@ -26,6 +39,10 @@ class StudentsController < ApplicationController
     
     @student = Student.new(student_params)
     @student.save
+      
+    # Log them in
+    session[:student_id] = @student.id
+      
     redirect_to students_path, notice: "Student successfully added!"
   end
   
@@ -62,4 +79,6 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:name, :nickname, :email, :image_url, :password, :password_confirmation)
   end
+    
 end
+ 

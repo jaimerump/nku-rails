@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<% if @current_student %>
+  <div>Hello, <%= @current_student.name %>!</div>
+  <%= link_to "Sign Out", logout_path %>
+<% else %>
+  <%= link_to "Sign Up", new_student_path %>
+  <%= link_to "Sign In", login_page_path %>
+<% end %>
 
 <% flash.each do | name, msg | -%>
     <div><%= msg %></div>
