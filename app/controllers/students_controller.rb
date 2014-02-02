@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   
   def index
+    @current_student = get_current_student
     @students = Student.all
   end
   
@@ -8,8 +9,8 @@ class StudentsController < ApplicationController
   
   def new
     # Make sure they're not already logged in
-    current_student = get_current_student
-    if( current_student != nil )
+    @current_student = get_current_student
+    if( @current_student != nil )
       redirect_to students_path
     end
       
@@ -19,8 +20,8 @@ class StudentsController < ApplicationController
   def create
     
     # Make sure they're not already logged in
-    current_student = get_current_student
-    if( current_student != nil )
+    @current_student = get_current_student
+    if( @current_student != nil )
       redirect_to students_path
     end
     
@@ -38,21 +39,26 @@ class StudentsController < ApplicationController
     end
     
     @student = Student.new(student_params)
-    @student.save
-      
-    # Log them in
-    session[:student_id] = @student.id
-      
-    redirect_to students_path, notice: "Student successfully added!"
+    if @student.save
+        
+      # Log them in
+      session[:student_id] = @student.id
+        
+      redirect_to students_path, notice: "Student successfully added!"
+    else
+      redirect_to 'new'
+    end
   end
   
   #Student Update actions
   
   def edit
+    @current_student = get_current_student
     @student = Student.find(params[:id])
   end
   
   def update
+    @current_student = get_current_student
     @student = Student.find(params[:id])
   
     #Check for email, add placeholder if missing

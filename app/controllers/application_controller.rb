@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   
   def get_current_student
     # Returns the currently logged in student
+    if( session[:student_id] == nil )
+      return nil
+    end
     return Student.find( session[:student_id] )
   end
   

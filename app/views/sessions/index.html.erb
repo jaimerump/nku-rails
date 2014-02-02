@@ -1,0 +1,30 @@
+<div>I have no validation so please be merciful</div>
+
+<%= form_for( @student, as: :student, url: login_process_path, method: :post ) do |f| %>
+
+   <% if @student.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.submit "Login" %>
+  </p>
+<% end %>
+
+<%= link_to "To Students List", students_path %>
