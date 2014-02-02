@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   def logout
     # Clear their session and redirect
     session[:student_id] = nil
-    redirect_to login_page_path
+    redirect_to students_path
   end
   
 end

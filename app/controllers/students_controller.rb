@@ -55,11 +55,28 @@ class StudentsController < ApplicationController
   def edit
     @current_student = get_current_student
     @student = Student.find(params[:id])
+    
+    if( @current_student == nil )
+      # They're not logged in
+      redirect_to students_path, notice: "You must be logged in to edit your info."
+    elsif( @current_student.id != @student.id )
+      # They can't edit someone else's profile
+      redirect_to students_path, notice: "You can't edit someone else's info!"
+    end
+    
   end
   
   def update
     @current_student = get_current_student
     @student = Student.find(params[:id])
+    
+    if( @current_student == nil )
+      # They're not logged in
+      redirect_to students_path, notice: "You must be logged in to edit your info."
+    elsif( @current_student.id != @student.id )
+      # They can't edit someone else's profile
+      redirect_to students_path, notice: "You can't edit someone else's info!"
+    end
   
     #Check for email, add placeholder if missing
     if( params[:student][:email].empty? )
