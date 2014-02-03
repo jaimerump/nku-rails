@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class LoginController < ApplicationController
   
   def index
     # Displays the login page

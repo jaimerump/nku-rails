@@ -12,9 +12,9 @@ NkuRails::Application.routes.draw do
   end
   
   # Login/logout routes
-  get 'login', to: "sessions#index", as: :login_page
-  post 'login/process', to: "sessions#login", as: :login_process
-  get 'logout', to: "sessions#logout", as: :logout
+  get 'login', to: "login#index", as: :login_page
+  post 'login/process', to: "login#login", as: :login_process
+  get 'logout', to: "login#logout", as: :logout
   
   root 'students#index'
 

@@ -11,6 +11,9 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Use twitter bootstrap
+gem "bootstrap-sass"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
