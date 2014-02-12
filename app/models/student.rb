@@ -3,8 +3,9 @@ class Student < ActiveRecord::Base
   has_secure_password
   
   def self.absent(date)
-    student_ids = Attendance.select("student_id").where("attended_on = ?", date)
-    return Student.find(student_ids)
+    attendances = Attendance.select("student_id").where("attended_on = ?", date)
+    present_students = attendances.collect{ |a| a.student_id }
+    return Student.where.not(id: present_students)
   end
     
   def self.in_seat(seat, date)
