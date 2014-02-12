@@ -8,7 +8,8 @@ class Student < ActiveRecord::Base
   end
     
   def self.in_seat(seat, date)
-    student_ids = Attendance.select("student_id").where("attended_on = ? AND seat = ?", date, seat)
+    attendances =  Attendance.where("attended_on = ? AND seat = ?", date, seat)
+    student_ids = attendances.collect{ |a| a.student_id }
     return Student.find(student_ids)
   end
   
