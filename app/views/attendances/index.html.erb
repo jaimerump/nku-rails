@@ -1,0 +1,29 @@
+<h1>Attendance for <%= Date.today %></h1>
+
+<div>Quadrant 1</div>
+<ul>
+  <% @in_seat_1.each do |student| %>
+  <li><%= student.name %></li>
+  <% end %>
+</ul>
+
+<div>Quadrant 2</div>
+<ul>
+  <% @in_seat_2.each do |student| %>
+  <li><%= student.name %></li>
+  <% end %>
+</ul>
+
+<div>Quadrant 3</div>
+<ul>
+  <% @in_seat_3.each do |student| %>
+  <li><%= student.name %></li>
+  <% end %>
+</ul>
+
+<div>Quadrant 4</div>
+<ul>
+  <% @in_seat_4.each do |student| %>
+  <li><%= student.name %></li>
+  <% end %>
+</ul>
