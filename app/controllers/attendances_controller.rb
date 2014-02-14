@@ -34,7 +34,7 @@ class AttendancesController < ApplicationController
       # Send them to the index page
       redirect_to attendances_path, notice: "Attendance successfully recorded!"
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 
