@@ -1,29 +1,51 @@
 <h1>Attendance for <%= Date.today %></h1>
 
-<div>Quadrant 1</div>
+<h3>Quadrant 1</h3>
 <ul>
   <% @in_seat_1.each do |student| %>
-  <li><%= student.name %></li>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
   <% end %>
 </ul>
 
-<div>Quadrant 2</div>
+<h3>Quadrant 2</h3>
 <ul>
   <% @in_seat_2.each do |student| %>
-  <li><%= student.name %></li>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
   <% end %>
 </ul>
 
-<div>Quadrant 3</div>
+<h3>Quadrant 3</h3>
 <ul>
   <% @in_seat_3.each do |student| %>
-  <li><%= student.name %></li>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
   <% end %>
 </ul>
 
-<div>Quadrant 4</div>
+<h3>Quadrant 4</h3>
 <ul>
   <% @in_seat_4.each do |student| %>
-  <li><%= student.name %></li>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
+  <% end %>
+</ul>
+
+<h3>Absent</h3>
+<ul>
+  <% @absent.each do |student| %>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
   <% end %>
 </ul>

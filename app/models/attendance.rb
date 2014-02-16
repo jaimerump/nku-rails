@@ -1,6 +1,8 @@
 class Attendance < ActiveRecord::Base
+  belongs_to :student
+  
   validates :student_id, uniqueness: { scope: :attended_on, 
-    message: "Can only attend once per day." }
+    message: "can only attend once per day." }
   validates :seat, numericality: { only_integer: true,
-    greater_than: 0, less_than: 5 }
+    greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
 end
