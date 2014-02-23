@@ -1,6 +1,6 @@
 <h1>Attendance for <%= @selected_date %></h1>
 
-<%= form_tag( attendances_path, method: 'get') do %>
+<%= form_tag( students_path, method: 'get') do %>
   <%= date_field_tag( 'selected_date', @selected_date ) %>
   <%= submit_tag "View Attendance" %>
 <% end %>
