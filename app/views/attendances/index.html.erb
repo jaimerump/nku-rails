@@ -1,44 +1,57 @@
-<h1>Attendance for <%= Date.today %></h1>
+<h1>Attendance for <%= @selected_date %></h1>
 
-<h3>Quadrant 1</h3>
-<ul>
-  <% @in_seat_1.each do |student| %>
-    <li>
-      <span><%= student.nickname %></span>
-      <img src="<%= student.image_url %>" />
-    </li>
-  <% end %>
-</ul>
+<%= form_tag( attendances_path, method: 'get') do %>
+  <%= date_field_tag( 'selected_date', @selected_date ) %>
+  <%= submit_tag "View Attendance" %>
+<% end %>
 
-<h3>Quadrant 2</h3>
-<ul>
-  <% @in_seat_2.each do |student| %>
-    <li>
-      <span><%= student.nickname %></span>
-      <img src="<%= student.image_url %>" />
-    </li>
-  <% end %>
-</ul>
+<div>
+  <h3>Quadrant 1</h3>
+  <ul>
+    <% @in_seat_1.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-<h3>Quadrant 3</h3>
-<ul>
-  <% @in_seat_3.each do |student| %>
-    <li>
-      <span><%= student.nickname %></span>
-      <img src="<%= student.image_url %>" />
-    </li>
-  <% end %>
-</ul>
+<div style="float:right;">
+  <h3>Quadrant 2</h3>
+  <ul>
+    <% @in_seat_2.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-<h3>Quadrant 4</h3>
-<ul>
-  <% @in_seat_4.each do |student| %>
-    <li>
-      <span><%= student.nickname %></span>
-      <img src="<%= student.image_url %>" />
-    </li>
-  <% end %>
-</ul>
+<div>
+  <h3>Quadrant 3</h3>
+  <ul>
+    <% @in_seat_3.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div style="float:right;">
+  <h3>Quadrant 4</h3>
+  <ul>
+    <% @in_seat_4.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <h3>Absent</h3>
 <ul>
