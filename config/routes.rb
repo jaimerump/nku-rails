@@ -9,6 +9,7 @@ NkuRails::Application.routes.draw do
   end
   
   resources :students do
+    resources :attendances
   end
   
   resources :attendances do
