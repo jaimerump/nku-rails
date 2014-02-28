@@ -1,0 +1,2 @@
+describe Attendance do
+end
