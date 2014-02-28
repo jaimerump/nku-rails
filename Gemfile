@@ -23,6 +23,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 # Use has_secure_password for authentication
