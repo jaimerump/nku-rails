@@ -4,9 +4,6 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :posts do
-    resources :comments
-  end
   
   resources :students do
     resources :attendances
@@ -19,6 +16,9 @@ NkuRails::Application.routes.draw do
   get 'login', to: "login#index", as: :login_page
   post 'login/process', to: "login#login", as: :login_process
   get 'logout', to: "login#logout", as: :logout
+  
+  # Seating Chart
+  get 'seating', to: "seating#index", as: :seating_chart
   
   root 'students#index'
 

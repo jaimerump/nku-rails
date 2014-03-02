@@ -12,6 +12,10 @@
   <div>Hello, <%= @current_student.name %></div>
   <%= link_to "Sign Out", logout_path %>
   <%= link_to "Record Attendance", new_attendance_path %>
+  <%= link_to "Seating Chart", seating_chart_path  %>
+  <%= link_to "View all attendances", attendances_path  %>
+  <%= link_to "View all students", students_path  %>
+  <%= link_to 'Edit', edit_student_path(@current_student) %>
 <% else %>
   <%= link_to "Sign Up", new_student_path %>
   <%= link_to "Sign In", login_page_path %>

@@ -1,0 +1,90 @@
+<h1>Attendance for <%= @selected_date %></h1>
+
+<%= form_tag( seating_chart_path, method: 'get') do %>
+  <%= date_field_tag( 'selected_date', @selected_date ) %>
+  <%= submit_tag "View Attendance" %>
+<% end %>
+
+<div>
+  <h3>Quadrant 1</h3>
+  <ul>
+    <% @in_seat_1.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div style="float:right;">
+  <h3>Quadrant 2</h3>
+  <ul>
+    <% @in_seat_2.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <h3>Quadrant 3</h3>
+  <ul>
+    <% @in_seat_3.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div style="float:right;">
+  <h3>Quadrant 4</h3>
+  <ul>
+    <% @in_seat_4.each do |student| %>
+      <li>
+        <span><%= student.nickname %></span>
+        <img src="<%= student.image_url %>" />
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<h3>Absent</h3>
+<ul>
+  <% @absent.each do |student| %>
+    <li>
+      <span><%= student.nickname %></span>
+      <img src="<%= student.image_url %>" />
+    </li>
+  <% end %>
+</ul>
+
+<%
+  student_count = Student.all.size
+  absent_count = @absent.size
+  %>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Category', 'Number of students'],
+        ['Present',     <%= student_count - absent_count %>],
+         ['Absent',    <%= absent_count %>]
+         ]);
+         
+         var options = {
+         title: 'Student Attendance'
+         };
+         
+         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+         chart.draw(data, options);
+         }
+  </script>
+<div id="piechart"></div>

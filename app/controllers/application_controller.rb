@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+   before_action :require_login
   
   def get_current_student
     # Returns the currently logged in student
@@ -9,6 +10,16 @@ class ApplicationController < ActionController::Base
       return nil
     end
     return Student.find( session[:student_id] )
+  end
+  
+ 
+  private
+ 
+  def require_login
+    if get_current_student == nil
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_page_path # halts request cycle
+    end
   end
   
 end

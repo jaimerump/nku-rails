@@ -1,5 +1,7 @@
 class LoginController < ApplicationController
   
+  skip_before_action :require_login, only: [:index, :login]
+  
   def index
     # Displays the login page
     
