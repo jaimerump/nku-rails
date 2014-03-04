@@ -5,7 +5,7 @@ class AttendancesController < ApplicationController
     if( params[:student_id] )
       # Get all of this student's attendances
       @selected_student = Student.find( params[:student_id] )
-      @attendances = Attendance.where( student: @selected_student )
+      @attendances = @selected_student.attendances
     else
       # Show all attendances
       @attendances = Attendance.all
