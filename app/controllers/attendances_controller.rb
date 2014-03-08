@@ -1,6 +1,7 @@
 class AttendancesController < ApplicationController
   
   def index
+    @current_student = get_current_student
     # Check if a student is specified
     if( params[:student_id] )
       # Get all of this student's attendances
