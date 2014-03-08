@@ -1,7 +1,6 @@
 class SeatingController < ApplicationController
   
   def index
-     @current_student = get_current_student
     # Get the students in each seat
     @selected_date = params[:selected_date] || Date.today
     @in_seat_1 = Student.in_seat(1, @selected_date)

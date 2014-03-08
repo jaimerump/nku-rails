@@ -3,7 +3,6 @@ class StudentsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   
   def index
-    @current_student = get_current_student
     # Get the students 
     @students = Student.all
   end

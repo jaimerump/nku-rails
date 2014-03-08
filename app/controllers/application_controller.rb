@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
     return Student.find( session[:student_id] )
   end
-  
+  helper_method :get_current_student
  
   private
  
