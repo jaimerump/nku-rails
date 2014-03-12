@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307210112) do
+ActiveRecord::Schema.define(version: 20140312201036) do
 
   create_table "assignments", force: true do |t|
     t.integer "student_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140307210112) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.boolean  "is_admin"
   end
 
 end
