@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
   has_many :attendances, dependent: :destroy
+  has_many :assignments, dependent: :destroy
   has_secure_password
   
   def self.absent(date=Date.today)

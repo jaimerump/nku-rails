@@ -1,4 +1,5 @@
 class Assignment < ActiveRecord::Base
+  belongs_to :student
   
   def percentage
     ( score * 100 ) / total
