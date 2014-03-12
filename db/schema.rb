@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140312201036) do
 
   create_table "assignments", force: true do |t|
     t.integer "student_id"
+    t.string  "name"
     t.integer "score"
     t.integer "total"
   end

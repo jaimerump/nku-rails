@@ -1,0 +1,40 @@
+<h1>Add Assignment</h1>
+
+<%= form_for @assignment do |f| %>
+
+   <% if @assignment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited
+      this assignment from being saved:</h2>
+    <ul>
+    <% @assignment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+    <%= f.label :student %><br>
+    <%= f.select "student", options_from_collection_for_select(@students, "id", "nickname") %>
+  </p>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :score %><br>
+    <%= f.number_field :score %>
+  </p>
+
+  <p>
+    <%= f.label :total %><br>
+    <%= f.number_field :total %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
