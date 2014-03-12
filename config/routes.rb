@@ -7,10 +7,13 @@ NkuRails::Application.routes.draw do
   
   resources :students do
     resources :attendances
+    resources :assignments
   end
   
   resources :attendances do
   end
+  
+  resources :assignments
   
   # Login/logout routes
   get 'login', to: "login#index", as: :login_page

@@ -1,0 +1,19 @@
+<h1>
+  <% if @selected_student %>
+    <%= @selected_student.nickname %>'s Assignments
+  <% else %>
+    All assignments
+  <% end %>
+</h1>
+
+<ul>
+  <% @assignments.each do |assignment| %>
+  <li>
+    <div><%= assignment.student.name %></div>
+    <div><%= assignment.name %></div>
+    <div><%= assignment.score %></div>
+    <div><%= assignment.total %></div>
+    <div><%= assignment.percentage %>%</div>
+  </li>
+  <% end %>
+</ul>

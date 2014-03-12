@@ -16,6 +16,13 @@
   <%= link_to "View all attendances", attendances_path  %>
   <%= link_to "View all students", students_path  %>
   <%= link_to 'Edit', edit_student_path(@current_student) %>
+  
+  <% if( @current_student.is_admin? ) %>
+    <%= link_to "Add Assignment", new_assignment_path %>
+  <% else %>
+    <%= link_to "My Assignments", student_assignments_path(@current_student) %>
+  <% end %>
+  
 <% else %>
   <%= link_to "Sign Up", new_student_path %>
   <%= link_to "Sign In", login_page_path %>
