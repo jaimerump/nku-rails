@@ -1,6 +1,11 @@
 class Assignment < ActiveRecord::Base
   belongs_to :student
   
+  validates :score, numericality: { only_integer: true,
+    greater_than_or_equal_to: 0 }
+  validates :total, numericality: { only_integer: true,
+    greater_than_or_equal_to: 0 }
+  
   def percentage
     ( score * 100 ) / total
   end
