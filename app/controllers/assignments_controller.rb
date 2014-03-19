@@ -46,4 +46,26 @@ class AssignmentsController < ApplicationController
     
   end
   
+  def create
+    # Processes the new assignment form
+    current_student = get_current_student
+    if( !current_student || !current_student.is_admin? )
+      redirect_to students_path, notice: "Unauthorized!"
+    end
+    
+    # Create the assignment
+    @assignment = Assignment.new(assignment_params)
+    if @assignment.save
+      # Send them to the index page
+      redirect_to assignments_path, notice: "Assignment successfully recorded!"
+    else
+      render 'new'
+    end
+  end
+  
+  private
+  def assignment_params
+    params.require(:assignment).permit(:student_id, :name, :score, :total)
+  end
+  
 end
