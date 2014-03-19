@@ -14,14 +14,24 @@
   <% end %>
 </h1>
 
-<ul>
+<table>
+  <tbody>
+    <th>
+      <td>Student</td>
+      <td>Assignment</td>
+      <td>Score</td>
+      <td>Total</td>
+      <td>Percentage</td>
+    </th>
+  
   <% @assignments.each do |assignment| %>
-  <li>
-    <div><%= assignment.student.name %></div>
-    <div><%= assignment.name %></div>
-    <div><%= assignment.score %></div>
-    <div><%= assignment.total %></div>
-    <div><%= assignment.percentage %>%</div>
-  </li>
+    <tr>
+      <td><%= assignment.student.name %></td>
+      <td><%= assignment.name %></td>
+      <td><%= assignment.score %></td>
+      <td><%= assignment.total %></td>
+      <td><%= assignment.percentage %>%</td>
+    </tr>
   <% end %>
-</ul>
+</tbody>    
+</table>
