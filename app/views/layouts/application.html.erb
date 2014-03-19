@@ -19,6 +19,7 @@
   
   <% if( @current_student.is_admin? ) %>
     <%= link_to "Add Assignment", new_assignment_path %>
+    <%= link_to "View all assignments", assignments_path %>
   <% else %>
     <%= link_to "My Assignments", student_assignments_path(@current_student) %>
   <% end %>

@@ -1,3 +1,11 @@
+<% if @current_student.is_admin? %>
+  <%= form_tag( assignments_path, method: 'get') do %>
+    <%= select_tag "student_id", options_from_collection_for_select(@students, "id", "nickname") %>
+    <br />
+    <%= submit_tag "View Assignments" %>
+  <% end %>
+<% end %>
+
 <h1>
   <% if @selected_student %>
     <%= @selected_student.nickname %>'s Assignments
