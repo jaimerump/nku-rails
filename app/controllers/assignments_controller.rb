@@ -11,16 +11,18 @@ class AssignmentsController < ApplicationController
         # Fetch this student's assignments
         @selected_student = Student.find(params[:student_id])
         @assignments = @selected_student.assignments
+        @average = Assignment.average_percentage(params[:student_id])
       else
         # Fetch all assignments
         @assignments = Assignment.all
+        @average = Assignment.average_percentage
       end
       
     else 
       # Student can only see their grades
       @selected_student = @current_student
       @assignments = @current_student.assignments
-      
+      @average = Assignment.average_percentage(@selected_student.id)
     end
     
   end
