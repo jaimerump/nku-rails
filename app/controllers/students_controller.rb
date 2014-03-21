@@ -99,6 +99,29 @@ class StudentsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def upload
+    # Allows admin to upload csv file of students
+    @current_student = get_current_student
+    if( !@current_student.is_admin? )
+      redirect_to students_path, notice: "Unauthorized!"
+    end
+  end
+  
+  def process_upload
+     # Allows admin to upload csv file of students
+    @current_student = get_current_student
+    if( !@current_student.is_admin? )
+      redirect_to students_path, notice: "Unauthorized!"
+    end
+    
+    # Read in the file
+    require 'csv'
+    file = params[:csv]
+    StudentUploader.upload_file(file)
+    
+    redirect_to assignments_path, notice: "Uploaded!"
+  end
 
   private
   def student_params
