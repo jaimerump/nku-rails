@@ -23,6 +23,10 @@ NkuRails::Application.routes.draw do
   # Seating Chart
   get 'seating', to: "seating#index", as: :seating_chart
   
+  # Upload routes
+  get 'upload', to: "students#upload", as: :students_upload
+  post 'upload', to: "students#process_upload", as: :students_process_upload
+  
   root 'students#index'
 
   # Example of regular route:
