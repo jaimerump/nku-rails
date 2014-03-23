@@ -15,4 +15,8 @@ class Student < ActiveRecord::Base
     return Student.find(student_ids)
   end
   
+  def avatar
+    Avatar.from_student(self)
+  end
+  
 end

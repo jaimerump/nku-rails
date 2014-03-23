@@ -11,7 +11,7 @@
     <% @in_seat_1.each do |student| %>
       <li>
         <span><%= student.nickname %></span>
-        <img src="<%= student.image_url %>" />
+        <img src="<%= student.avatar %>" />
       </li>
     <% end %>
   </ul>
@@ -23,7 +23,7 @@
     <% @in_seat_2.each do |student| %>
       <li>
         <span><%= student.nickname %></span>
-        <img src="<%= student.image_url %>" />
+        <img src="<%= student.avatar %>" />
       </li>
     <% end %>
   </ul>
@@ -35,7 +35,7 @@
     <% @in_seat_3.each do |student| %>
       <li>
         <span><%= student.nickname %></span>
-        <img src="<%= student.image_url %>" />
+        <img src="<%= student.avatar %>" />
       </li>
     <% end %>
   </ul>
@@ -47,7 +47,7 @@
     <% @in_seat_4.each do |student| %>
       <li>
         <span><%= student.nickname %></span>
-        <img src="<%= student.image_url %>" />
+        <img src="<%= student.avatar %>" />
       </li>
     <% end %>
   </ul>
@@ -58,7 +58,7 @@
   <% @absent.each do |student| %>
     <li>
       <span><%= student.nickname %></span>
-      <img src="<%= student.image_url %>" />
+      <img src="<%= student.avatar %>" />
     </li>
   <% end %>
 </ul>

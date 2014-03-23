@@ -26,20 +26,7 @@ class StudentsController < ApplicationController
     if( @current_student != nil )
       redirect_to students_path
     end
-    
-    #Check for email, add placeholder if missing
-    if( params[:student][:email].empty? )
-      params[:student][:email] = "placeholder@example.com"
-    end
-    
-    #Check for image, consult Gravatar if missing
-    if( params[:student][:image_url].empty? )
-      require 'digest/md5'
-      email_address = params[:student][:email].downcase
-      hash = Digest::MD5.hexdigest(email_address)
-      params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
-    end
-    
+     
     @student = Student.new(student_params)
     if @student.save
         
@@ -78,19 +65,6 @@ class StudentsController < ApplicationController
     elsif( @current_student.id != @student.id )
       # They can't edit someone else's profile
       redirect_to students_path, notice: "You can't edit someone else's info!"
-    end
-  
-    #Check for email, add placeholder if missing
-    if( params[:student][:email].empty? )
-      params[:student][:email] = "placeholder@example.com"
-    end
-    
-    #Check for image, consult Gravatar if missing
-    if( params[:student][:image_url].empty? )
-      require 'digest/md5'
-      email_address = params[:student][:email].downcase
-      hash = Digest::MD5.hexdigest(email_address)
-      params[:student][:image_url] = "http://www.gravatar.com/avatar/#{hash}"
     end
     
     if @student.update(student_params)

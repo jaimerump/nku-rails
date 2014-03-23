@@ -9,7 +9,7 @@
   <li>
     <span><%= link_to( attendance.student.nickname, student_attendances_path( attendance.student ) ) %></span>
     <span><%= attendance.attended_on %></span>
-    <img src="<%= attendance.student.image_url %>" />
+    <img src="<%= attendance.student.avatar %>" />
   </li>
   <% end %>
 </ul>
