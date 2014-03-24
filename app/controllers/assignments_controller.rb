@@ -74,9 +74,11 @@ class AssignmentsController < ApplicationController
     # Read in the file
     require 'csv'
     file = params[:csv]
+    before_count = Assignment.all.size
     AssignmentUploader.upload_file(file)
+    after_count = Assignment.all.size
     
-    redirect_to assignments_path, notice: "Uploaded!"
+    redirect_to assignments_path, notice: "#{after_count - before_count} assignments created."
   end
   
   private
