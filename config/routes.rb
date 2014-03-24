@@ -4,6 +4,12 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+ 
+   # Upload routes
+  get 'students/upload', to: "students#upload", as: :students_upload
+  post 'students/upload', to: "students#process_upload", as: :students_process_upload
+  get 'assignments/upload', to: "assignments#upload", as: :assignments_upload
+  post 'assignments/upload', to: "assignments#process_upload", as: :assignments_process_upload
   
   resources :students do
     resources :attendances
@@ -22,10 +28,6 @@ NkuRails::Application.routes.draw do
   
   # Seating Chart
   get 'seating', to: "seating#index", as: :seating_chart
-  
-  # Upload routes
-  get 'upload', to: "students#upload", as: :students_upload
-  post 'upload', to: "students#process_upload", as: :students_process_upload
   
   root 'students#index'
 

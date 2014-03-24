@@ -56,6 +56,29 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  def upload
+    # Allows admin to upload csv file of assignments
+    @current_student = get_current_student
+    if( !@current_student.is_admin? )
+      redirect_to assignments_path, notice: "Unauthorized!"
+    end
+  end
+  
+  def process_upload
+    # Allows admin to upload csv file of assignments
+    @current_student = get_current_student
+    if( !@current_student.is_admin? )
+      redirect_to assignments_path, notice: "Unauthorized!"
+    end
+    
+    # Read in the file
+    require 'csv'
+    file = params[:csv]
+    AssignmentUploader.upload_file(file)
+    
+    redirect_to assignments_path, notice: "Uploaded!"
+  end
+  
   private
   def assignment_params
     params.require(:assignment).permit(:student_id, :name, :score, :total)
