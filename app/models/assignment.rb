@@ -25,7 +25,11 @@ class Assignment < ActiveRecord::Base
     assignments.each{ |a| percentage_sum += a.percentage }
     
     # Get average percentage
-    percentage_sum / assignments.size
+    if assignments.size == 0
+      return 0
+    else
+      percentage_sum / assignments.size
+    end
     
   end
   
